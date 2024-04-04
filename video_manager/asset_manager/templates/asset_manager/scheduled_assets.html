@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div id="asset-container">
+            {% for asset in assets %}
+                <h3 class="text-center mt-2 mb-2">{{ asset.caption }}</h3>
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video class="embed-responsive-item" controls>
+                    <source src="{{ asset.video.url }}" type="video/mp4">
+                    </video>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

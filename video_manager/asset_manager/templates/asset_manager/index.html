@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<hr>
+<div class="container">
+    {% for video in videos %}
+        <h3 class="text-center mt-2 mb-2">{{ video.caption }}</h3>
+        <div class="embed-responsive embed-responsive-4by3">
+            <video class="embed-responsive-item" controls>
+            <source src="{{ video.video.url }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="mt-2 d-flex justify-content-between align-items-center">
+            <span class="text-muted">{{ video.created_at|date:"Y-m-d" }}</span>
+            <div>
+                <a href="{% url 'edit-asset' video.id %}" class="btn btn-secondary">Edit</a>
+                <a href="{% url 'delete-asset' video.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}
